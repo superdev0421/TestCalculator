@@ -4,6 +4,9 @@ const express_1 = require("express");
 const router = (0, express_1.Router)();
 const calcMain = (req, res) => {
     const { total, next, operation } = req.query;
+    console.log('total', total);
+    console.log('next', next);
+    console.log('operation', operation);
     let totalNum = isNaN(total) ? null : Number(total);
     let nextNum = isNaN(next) ? null : Number(next);
     if (nextNum == null) {

@@ -9,7 +9,7 @@ import {
 } from './App.styled';
 
 
-const BASE_URL = "http//localhost:"  
+const BASE_URL = "http://localhost:1211"  
 
 export const App: FunctionComponent = () => {
     
@@ -17,22 +17,42 @@ export const App: FunctionComponent = () => {
     const [nextValue,setNextValue] = useState<string | null>(null);
     const [error,setError] = useState<boolean>(false);
     const [display,setDisplay] = useState<string | null>('0');
+    const [operation, setOperation] = useState<string | null>(null);
+
+    const onClearEntryButtonClick =() => {
+        setResult('0');
+        setNextValue('0');
+        setDisplay('0');
+        setOperation(null);
+        return;
+    }
 
     const onPointButtonClick = () => {
-
+        console.log("onPointButtonClick")
+        if (nextValue === null) {
+            setNextValue("0.");
+            console.log(nextValue);
+            return;
+          }
+          if (!nextValue.includes("."))
+            console.log(nextValue);
+            setNextValue(nextValue + ".");
+          return;
     }
     const onOperatorButtonClick = async (operator:Operator): Promise<void> => {
         try {
-            let operation = null;
-            if(operator == '+') operation = "plus"
-                else if(operator == '-') operation = "minus"
-                else if(operator == '×') operation = "times"
-                else if(operator == '÷') operation = "divide"
-                else if(operator == '=') operation = "equal"
-            let res = await axios.get(`${BASE_URL}/api/calc/?total=${result}&next=${nextValue}&operation=${operation}`)
+            let res = await axios.get(`${BASE_URL}/api/calc/?total=${result}&next=${nextValue}&operation=${operation}` );
+            console.log(res.data);
+            let opt = null;
+            if(operator == '+') opt = "plus"
+                else if(operator == '-') opt = "minus"
+                else if(operator == '×') opt = "times"
+                else if(operator == '÷') opt = "divide"
+                else if(operator == '=') opt = "equal"
+            setOperation(opt);
             setResult(res.data);
             setNextValue(null);
-            setDisplay(result)
+            setDisplay(res.data)
         } catch(err: any) {
             console.log(err);
             setError(true);   
@@ -47,12 +67,13 @@ export const App: FunctionComponent = () => {
 
 
     return (
-        <StyledApp>
+        <StyledApp> 
             <Display value={error ? 'Error occured': String(display)}/>
             <Pad 
                 onPointButtonClick={onPointButtonClick}
                 onDigitalButtonClick={onDigitalButtonClick}
-                onOperatorButtonClick={onOperatorButtonClick}    
+                onOperatorButtonClick={onOperatorButtonClick}
+                onClearEntryButtonClick={onClearEntryButtonClick}    
             />
         </StyledApp>
     );

@@ -6,16 +6,16 @@ import routes from './routes/calculator';
 
 const app: Express = express();
 app.use(bodyParser.json());
-app.use(bodyParser,urlencoded({
-    extended: false
-}));
+// app.use(bodyParser,urlencoded({
+//     extended: false
+// }));
 app.use(cors());
 
 const port = 1211;
 
-app.use('/', (req: Request, res: Response, next) => {
-    next();
-})
+// app.use('/', (req: Request, res: Response, next) => {
+//     next();
+// })
 
 app.use('/api/calc/', routes);
 

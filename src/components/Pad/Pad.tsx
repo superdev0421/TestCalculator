@@ -12,13 +12,15 @@ interface PadProps{
   onOperatorButtonClick: (operator: Operator) => void
   onDigitalButtonClick: (digit: Digit) => void
   onPointButtonClick: () => void
+  onClearEntryButtonClick: () => void
 }
 
 
 export const Pad:FunctionComponent<PadProps> = ( 
   {onOperatorButtonClick,
   onDigitalButtonClick,
-  onPointButtonClick}
+  onPointButtonClick,
+  onClearEntryButtonClick}
 ) => {
     return (
     <StyledPad>
@@ -37,7 +39,7 @@ export const Pad:FunctionComponent<PadProps> = (
       <Button color="red" >
         AC
       </Button>
-      <Button >
+      <Button onClick={() => onClearEntryButtonClick()}>
         C
       </Button>
       <Button >
@@ -85,7 +87,7 @@ export const Pad:FunctionComponent<PadProps> = (
       <Button onClick={() => onDigitalButtonClick(0)}>
         0
       </Button>
-      <Button onClick={() => onPointButtonClick} >
+      <Button onClick={() => onPointButtonClick()} >
         .
       </Button>
       <Button color="green" isLarge={true} onClick={() => onOperatorButtonClick('=')} >
