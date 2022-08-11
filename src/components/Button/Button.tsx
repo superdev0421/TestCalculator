@@ -8,12 +8,13 @@ interface ButtonProps {
   color?: 'red' | 'green' | 'dark'
   isLarge?: boolean
   children?: string
+  onClick?: () => void
 }
 
 
-export const Button: FunctionComponent<ButtonProps> = ({ children, color, isLarge }) => {
+export const Button: FunctionComponent<ButtonProps> = ({ children, color, isLarge, onClick }) => {
     return (
-      <StyledButton color={color} isLarge={isLarge} >
+      <StyledButton color={color} isLarge={isLarge} onClick={onClick}>
         {children}
       </StyledButton>
     )

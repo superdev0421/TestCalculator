@@ -8,18 +8,19 @@ import {
 } from './Display.styled'
 
 interface DisplayProps {
-    
+    value: string | null;
 }
 
 
-export const Screen : FunctionComponent <DisplayProps> = () => {
+export const Screen : FunctionComponent <DisplayProps> = ({value}) => {
     return (
         <StyledDisplay>
             <StyledIndicatorList>
                 <StyledExpression>
                 </StyledExpression>
             </StyledIndicatorList>
-            <StyleScreen>
+            <StyleScreen >
+                {value}
             </StyleScreen>
         </StyledDisplay>
     )

@@ -9,11 +9,17 @@ import {
 
 
 interface PadProps{
-
+  onOperatorButtonClick: (operator: Operator) => void
+  onDigitalButtonClick: (digit: Digit) => void
+  onPointButtonClick: () => void
 }
 
 
-export const Pad:FunctionComponent<PadProps> = ( ) => {
+export const Pad:FunctionComponent<PadProps> = ( 
+  {onOperatorButtonClick,
+  onDigitalButtonClick,
+  onPointButtonClick}
+) => {
     return (
     <StyledPad>
       <Button >
@@ -37,52 +43,52 @@ export const Pad:FunctionComponent<PadProps> = ( ) => {
       <Button >
         -/+
       </Button>
-      <Button color="dark">
+      <Button color="dark" onClick={() => onOperatorButtonClick('÷')}>
         ÷
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(7)}>
         7
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(8)}>
         8
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(9)}>
         9
       </Button>
-      <Button color="dark">
+      <Button color="dark" onClick={() => onOperatorButtonClick('×')}>
         ×
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(4)}>                                                
         4
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(5)}>
         5
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(6)}>
         6
       </Button>
-      <Button color="dark" >
+      <Button color="dark" onClick={() =>onOperatorButtonClick('-')}>
         -
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(1)}>
         1
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(2)}>
         2
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(3)}>
         3
       </Button>
-      <Button color="dark">
+      <Button color="dark" onClick={() => onOperatorButtonClick('+')}>
         +
       </Button>
-      <Button >
+      <Button onClick={() => onDigitalButtonClick(0)}>
         0
       </Button>
-      <Button >
+      <Button onClick={() => onPointButtonClick} >
         .
       </Button>
-      <Button color="green" isLarge={true} >
+      <Button color="green" isLarge={true} onClick={() => onOperatorButtonClick('=')} >
         =
       </Button>
     </StyledPad>
