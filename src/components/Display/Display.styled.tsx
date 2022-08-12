@@ -23,6 +23,8 @@ export const StyleScreen = styled.div`
   justify-content: flex-end;  
   overflow: hidden;
 `
+// StyleScreen.displayName = 'StyleScreen'
+// ;
 
 export const StyledDisplay = styled.div`
   background-color: #393939;

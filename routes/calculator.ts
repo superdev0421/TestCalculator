@@ -6,9 +6,9 @@ const router = Router();
 const calcMain = (req: Request, res: Response) => {
 
     const { total, next, operation } = req.query as any;
-    console.log('total', total);
-    console.log('next', next);
-    console.log('operation', operation);
+    // console.log('total', total);
+    // console.log('next', next);
+    // console.log('operation', operation);
 
     let totalNum: number | null = isNaN(total) ? null : Number(total);
     let nextNum: number | null = isNaN(next) ? null : Number(next);

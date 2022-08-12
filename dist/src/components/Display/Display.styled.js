@@ -26,6 +26,8 @@ exports.StyleScreen = styled_components_1.default.div `
   justify-content: flex-end;  
   overflow: hidden;
 `;
+// StyleScreen.displayName = 'StyleScreen'
+// ;
 exports.StyledDisplay = styled_components_1.default.div `
   background-color: #393939;
   color: #fff;

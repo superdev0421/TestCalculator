@@ -12,13 +12,13 @@ interface ButtonProps {
 }
 
 
-export const Button: FunctionComponent<ButtonProps> = ({ children, color, isLarge, onClick }) => {
+export const Button: FunctionComponent<ButtonProps> = ({ children,  color, isLarge, onClick }) => {
     return (
-      <StyledButton color={color} isLarge={isLarge} onClick={onClick}>
+      <button  color={color} onClick={onClick} id={children}>
         {children}
-      </StyledButton>
+      </button>
     )
   }
   
-  export default Button
+  export default Button 
   

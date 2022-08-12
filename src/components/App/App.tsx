@@ -11,7 +11,10 @@ import {
 
 const BASE_URL = "http://localhost:1211"  
 
-export const App: FunctionComponent = () => {
+
+
+
+export const App: FunctionComponent = () =>  {
     
     const [result,setResult] = useState<string>('0');
     const [nextValue,setNextValue] = useState<string | null>(null);
@@ -78,5 +81,6 @@ export const App: FunctionComponent = () => {
         </StyledApp>
     );
 }
+
 
 export default App;
